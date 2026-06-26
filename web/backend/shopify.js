@@ -14,7 +14,8 @@ if (mongoDbUrl == undefined) {
   mongoDbUrl = "mongodb://localhost:27017/shopify-announcement-banner";
 }
 
-const hostName = process.env.HOST;
+let rawHost = process.env.HOST || process.env.RENDER_EXTERNAL_URL || "localhost:3000";
+const hostName = rawHost.replace(/^https?:\/\//, "");
 
 const shopify = shopifyApp({
   api: {
