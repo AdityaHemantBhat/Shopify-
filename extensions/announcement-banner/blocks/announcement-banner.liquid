@@ -1,0 +1,84 @@
+{% comment %} Theme App Extension (App Embed Block) {% endcomment %}
+{% assign announcement_text = shop.metafields.my_app.announcement.value %}
+
+{% if announcement_text != blank %}
+  {{ 'announcement-banner.css' | asset_url | stylesheet_tag }}
+
+  <div
+    id="app-announcement-banner"
+    class="announcement-banner"
+    role="banner"
+    aria-label="Store announcement"
+    style="
+      --banner-bg: {{ block.settings.background_color }};
+      --banner-text: {{ block.settings.text_color }};
+    "
+  >
+    <div class="announcement-banner__inner">
+    <div class="announcement-banner__ticker-wrap">
+      <div class="announcement-banner__ticker">
+        {% for i in (1..10) %}
+          <span class="announcement-banner__text">{{ announcement_text | escape }}</span>
+        {% endfor %}
+      </div>
+    </div>
+      <button
+        class="announcement-banner__dismiss"
+        type="button"
+        aria-label="Dismiss announcement"
+        onclick="dismissAnnouncementBanner()"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.207 4.707a1 1 0 00-1.414-1.414L8 6.086 5.207 3.293a1 1 0 00-1.414 1.414L6.586 8l-2.793 2.793a1 1 0 101.414 1.414L8 9.414l2.793 2.793a1 1 0 001.414-1.414L9.414 8l2.793-2.793z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const dismissAnnouncementBanner = () => {
+      const banner = document.getElementById('app-announcement-banner');
+      if (banner) {
+        banner.classList.add('announcement-banner--dismissing');
+        setTimeout(() => {
+          banner.style.display = 'none';
+          try {
+            sessionStorage.setItem('announcement_banner_dismissed', 'true');
+          } catch (e) {}
+        }, 300);
+      }
+    };
+
+    (() => {
+      try {
+        if (sessionStorage.getItem('announcement_banner_dismissed') === 'true') {
+          const banner = document.getElementById('app-announcement-banner');
+          if (banner) {
+            banner.style.display = 'none';
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Banner",
+  "target": "body",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

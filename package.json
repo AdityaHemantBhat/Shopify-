@@ -1,0 +1,20 @@
+{
+  "name": "shopify-announcement-banner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shopify Announcement Banner App — Display customizable announcements across your storefront",
+  "scripts": {
+    "shopify": "shopify",
+    "dev": "shopify app dev --localhost-port 4040",
+    "build": "shopify app build",
+    "deploy": "shopify app deploy",
+    "info": "shopify app info",
+    "generate": "shopify app generate"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@shopify/app": "^3.58.2",
+    "@shopify/cli": "^4.3.0"
+  }
+}

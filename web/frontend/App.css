@@ -1,0 +1,213 @@
+/**
+ * App-level CSS overrides for a Premium, Refined Dashboard Layout.
+ *
+ * Features: Soft borders, clean typography, minimalist badges,
+ * completely avoiding gradients for a pure flat but elegant feel.
+ */
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f6f6f7;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #1a1a1a;
+}
+
+/* ──────────────────────────────────────────────
+ * Global Polaris Overrides for a Refined Look
+ * ────────────────────────────────────────────── */
+
+/* Elegant Cards */
+.Polaris-Card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+  border: 1px solid #e1e3e5 !important;
+  border-radius: 12px !important;
+  background-color: #ffffff !important;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.Polaris-Card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+  transform: translateY(-1px);
+}
+
+/* Clean Text Fields */
+.Polaris-TextField__Input {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.Polaris-TextField__Backdrop {
+  border-radius: 8px !important;
+  border: 1px solid #d2d5d8 !important;
+}
+
+.Polaris-TextField:hover .Polaris-TextField__Backdrop {
+  border-color: #aeb4b9 !important;
+}
+
+.Polaris-TextField--focus .Polaris-TextField__Backdrop {
+  border-color: #1a1a1a !important;
+  box-shadow: 0 0 0 1px #1a1a1a !important;
+}
+
+.Polaris-TextField__Input:focus {
+  outline: none !important;
+}
+
+/* Elegant Buttons */
+.Polaris-Button {
+  border-radius: 8px !important;
+  border: 1px solid #d2d5d8 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02) !important;
+  font-weight: 500 !important;
+  transition: all 0.15s ease !important;
+}
+
+.Polaris-Button--variantPrimary {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.Polaris-Button--variantPrimary:hover {
+  background-color: #333333 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.Polaris-Button:not(.Polaris-Button--variantPrimary):hover {
+  background-color: #f9fafb !important;
+  border-color: #c9cccf !important;
+}
+
+/* Banners (Info, Critical) */
+.Polaris-Banner {
+  border: 1px solid #d2d5d8 !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+/* Active/Inactive Badges */
+.active-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #e3f5e1;
+  color: #1a7e12;
+  border: 1px solid #c9ebc5;
+}
+
+.active-badge::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1a7e12;
+}
+
+.inactive-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #f1f2f3;
+  color: #6d7175;
+  border: 1px solid #e1e3e5;
+}
+
+/* Loading overlays */
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* Dark Mode Extravaganza */
+@media (prefers-color-scheme: dark) {
+  html, body, #app {
+    background-color: #111111;
+    color: #e3e3e3;
+  }
+  
+  .Polaris-Card {
+    background-color: #1a1a1a !important;
+    border-color: #333333 !important;
+    box-shadow: none !important;
+  }
+  
+  .Polaris-Card:hover {
+    border-color: #444444 !important;
+  }
+
+  .Polaris-TextField__Backdrop {
+    border-color: #444444 !important;
+    background-color: #0a0a0a !important;
+  }
+
+  .Polaris-TextField__Input {
+    color: #ffffff !important;
+  }
+
+  .Polaris-TextField:hover .Polaris-TextField__Backdrop {
+    border-color: #666666 !important;
+  }
+
+  .Polaris-TextField--focus .Polaris-TextField__Backdrop {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 0 1px #ffffff !important;
+  }
+
+  .Polaris-Button {
+    border-color: #444444 !important;
+    background-color: #222222 !important;
+    color: #e3e3e3 !important;
+  }
+
+  .Polaris-Button--variantPrimary {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .Polaris-Button--variantPrimary:hover {
+    background-color: #e6e6e6 !important;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .Polaris-Button:not(.Polaris-Button--variantPrimary):hover {
+    background-color: #2a2a2c !important;
+    border-color: #555555 !important;
+  }
+
+  .Polaris-Banner {
+    border-color: #444444 !important;
+    background-color: #1a1a1a !important;
+  }
+
+  .active-badge {
+    background-color: #1a3a18;
+    color: #74d16c;
+    border-color: #2b5c28;
+  }
+
+  .active-badge::before {
+    background-color: #74d16c;
+  }
+
+  .inactive-badge {
+    background-color: #222222;
+    color: #a0a0a0;
+    border-color: #333333;
+  }
+}

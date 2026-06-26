@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Dev"
+application_url = "https://protein-ali-nvidia-ministry.trycloudflare.com"
+embedded = true
+client_id = "9831c98f758d041c273b3321caaf8cee"
+
+[build]
+automatically_update_urls_on_dev = false
+dev_store_url = "devstore-svrwrrz3.myshopify.com"
+
+[auth]
+redirect_urls = [
+  "https://protein-ali-nvidia-ministry.trycloudflare.com/auth/callback",
+  "https://protein-ali-nvidia-ministry.trycloudflare.com/auth/shopify/callback",
+  "https://protein-ali-nvidia-ministry.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2026-04"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,write_products,read_themes,write_themes"
+optional_scopes = [ ]
+use_legacy_install_flow = false
+
+[pos]
+embedded = false

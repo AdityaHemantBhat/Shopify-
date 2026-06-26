@@ -1,0 +1,6 @@
+roles = ["backend"]
+webhooks_path = "/api/webhooks"
+
+[commands]
+build = "npm run build"
+dev = "node backend/index.js"

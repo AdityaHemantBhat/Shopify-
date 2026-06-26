@@ -1,0 +1,205 @@
+/**
+ * Announcement Banner Styles
+ *
+ * 2026 Neo-Bento Design: Flat, high-contrast, no gradients, sharp.
+ */
+
+/* ──────────────────────────────────────────────
+ * Banner Container
+ * ────────────────────────────────────────────── */
+.announcement-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  border-bottom: 2px solid #ffffff;
+  box-shadow: 0 4px 0px rgba(0,0,0,1);
+
+  /* Entrance animation */
+  animation: announcementSlideDown 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* ──────────────────────────────────────────────
+ * Inner Container (centers content, handles layout)
+ * ────────────────────────────────────────────── */
+.announcement-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 48px 16px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ──────────────────────────────────────────────
+ * Text
+ * ────────────────────────────────────────────── */
+.announcement-banner__ticker-wrap {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.announcement-banner__ticker {
+  display: flex;
+  gap: 4rem;
+  animation: tickerScroll 20s linear infinite;
+}
+
+.announcement-banner__ticker:hover {
+  animation-play-state: paused;
+}
+
+.announcement-banner__text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+/* ──────────────────────────────────────────────
+ * Dismiss Button
+ * ────────────────────────────────────────────── */
+.announcement-banner__dismiss {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 2px solid #ffffff;
+  border-radius: 9999px;
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  flex-shrink: 0;
+}
+
+.announcement-banner__dismiss:hover {
+  background-color: #ffffff;
+  color: #000000;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.announcement-banner__dismiss:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.announcement-banner__dismiss:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* ──────────────────────────────────────────────
+ * Animations
+ * ────────────────────────────────────────────── */
+
+/* Slide down entrance */
+@keyframes announcementSlideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-10% - 0.4rem)); }
+}
+
+/* Slide up dismiss */
+.announcement-banner--dismissing {
+  animation: announcementSlideUp 0.3s cubic-bezier(0.8, 0, 0.8, 1) forwards;
+}
+
+@keyframes announcementSlideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+/* ──────────────────────────────────────────────
+ * Responsive — Tablet
+ * ────────────────────────────────────────────── */
+@media screen and (max-width: 768px) {
+  .announcement-banner__inner {
+    padding: 12px 48px 12px 16px;
+  }
+
+  .announcement-banner__text {
+    font-size: 13px;
+  }
+
+  .announcement-banner__dismiss {
+    right: 12px;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ──────────────────────────────────────────────
+ * Responsive — Mobile
+ * ────────────────────────────────────────────── */
+@media screen and (max-width: 480px) {
+  .announcement-banner__inner {
+    padding: 10px 40px 10px 12px;
+  }
+
+  .announcement-banner__text {
+    font-size: 12px;
+  }
+
+  .announcement-banner__dismiss {
+    right: 8px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .announcement-banner__dismiss svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ──────────────────────────────────────────────
+ * High Contrast / Reduced Motion
+ * ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .announcement-banner {
+    animation: none;
+  }
+
+  .announcement-banner__ticker {
+    animation: none;
+    overflow-x: auto;
+  }
+
+  .announcement-banner--dismissing {
+    animation: none;
+    display: none;
+  }
+
+  .announcement-banner__dismiss {
+    transition: none;
+  }
+}
